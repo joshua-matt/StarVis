@@ -4,8 +4,11 @@ This repository is for a data visualization project studying a database of 120,0
 ## Time log:
 ### 2/8
 25mins - exploratory analysis on color vs brightness
+
 10mins - exploratory analysis on ra vs dec
+
 20mins - trying to come up with function for projecting celestial sphere to a plane
+
 40mins - refining visualization of northern sky
 
 ### 2/9
