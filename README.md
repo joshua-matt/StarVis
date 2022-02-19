@@ -13,3 +13,16 @@ This repository is for a data visualization project studying a database of 120,0
 
 ### 2/9
 80mins - figuring out how to determine the alpha for each star given its magnitude
+
+### 2/15
+35mins - figuring out plots for distance vs velocity away from sun
+
+	- then learned that within local group, expansion of universe is not measurable ;_;
+
+### 2/16
+20mins - looking into spectra, stellar temperatures
+
+### 2/17
+10mins - investigate magnitude vs distance
+
+15mins - explore distribution of brightness, distance
