@@ -26,3 +26,9 @@ This repository is for a data visualization project studying a database of 120,0
 10mins - investigate magnitude vs distance
 
 15mins - explore distribution of brightness, distance
+
+### 2/22
+75mins - moving to Shiny, plotting multiple histos on one axis
+
+### 2/24
+50mins - making skymap interactive
