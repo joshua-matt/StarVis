@@ -32,3 +32,9 @@ This repository is for a data visualization project studying a database of 120,0
 
 ### 2/24
 50mins - making skymap interactive
+
+### 3/3
+30mins - fixing brightness function
+
+### 3/4
+50mins - adding more customization, cleaning up display
