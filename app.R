@@ -86,10 +86,14 @@ ui = navbarPage(title="StarVis",
                          plotOutput("hist")),
                 tabPanel("HR Diagram", "big chungo"),
                 tabPanel("Star Map",
-                         sliderInput("ang", label="Angle", min=-180,max=180,value=0),
-                         sliderInput("sz", label="Size", min=1, max=20,value=5),
-                         sliderInput("bright", label="Brightness", min=-2, max=10, value=c(-2,5), dragRange=TRUE),
-                         plotOutput("map"))
+                         sidebarLayout(sidebarPanel(sliderInput("ang", label="Polar Rotation", min=-180,max=180,value=0),
+                                                    sliderInput("sz", label="Star Size", min=1, max=10,value=3),
+                                                    sliderInput("bright", label="Star Brightness", min=-2, max=10, step=0.5, value=c(-2,5), dragRange=TRUE),
+                                                    checkboxInput("sh_color", label="Show star color", value=TRUE),
+                                                    checkboxInput("eq_bright", label="Equalize brightness", value=FALSE)),
+                                       mainPanel(plotOutput("map"))
+                                       )
+                         )
                
 )
 
@@ -103,10 +107,6 @@ south_coords = filter(coords,d<=0,ci<2)
 
 
 
-brightness <- function(mag) {
-  return(2.5^(-mag))
-}
-
 size <- function(mag) {
   return(if (mag > 3) 0.1 else -mag+3)
 }
@@ -115,6 +115,11 @@ north_bright = filter(north_coords, mag<5,-2<mag)
 south_bright = filter(south_coords, mag<5, -1<mag)
 
 server = function(input, output) {
+  brightness <- function(mag, min, max, b0=0.1) {
+    if (input$eq_bright)
+      return(0.8)
+    return((1-b0)*mag/(min-max)+b0)
+  }
   # output$bright = renderPlot({
   #       x    <- bright$dist
   #       bins <- seq(min(x), max(x), length.out = input$bins + 1)
@@ -141,14 +146,27 @@ server = function(input, output) {
     ggplot(data=dists) + geom_histogram(mapping=aes(x=dist, fill=absmag < 1), bins=input$bins)
   })
   
-  output$map = renderPlot({
-    angles = mutate(stars,d=dec*3.14159/180,r=-(ra+input$ang)*3.14159/12)
+  output$map = renderPlot({ ### MAKR ERENDERING FASTER!!!!!
+    angles = mutate(stars,d=dec*3.14159/180,r=-(ra-(input$ang/15))*3.14159/12)
     coords = mutate(angles,projx=cos(d)*cos(r),projy=cos(d)*sin(r))
     north_coords = filter(coords,d>0,ci<2)
     north_bright = filter(north_coords, mag<input$bright[2],input$bright[1]<mag)
     
-    ggplot(data=north_bright) + geom_point(mapping=aes(x=projx,y=projy,color=ci,alpha=brightness(mag), size=size(mag*input$sz*0.2)),stroke=0,shape=16) + scale_color_gradientn(colors=rev(c("#F82800","#FFB942","#FFFFFF","#CAD6FF"))) + theme(panel.background = element_rect(fill="black"), aspect.ratio=1, panel.grid.major = element_line(color="#000000"), panel.grid.minor=element_line(color="#000000"))
+    if (input$sh_color)
+      colors = rev(c("#F82800","#FFB942","#FFFFFF","#CAD6FF"))
+    else
+      colors = c("#FFFFFF")
     
+    ggplot(data=north_bright) + 
+      geom_point(mapping=aes(x=projx,y=projy,color=ci,
+                             alpha=brightness(mag, input$bright[1], input$bright[2])),
+                 size=input$sz*0.2, stroke=0,shape=16, show.legend=FALSE) + 
+      scale_color_gradientn(colors=colors) + 
+      theme(panel.background = element_rect(fill="black"), aspect.ratio=1, 
+            panel.grid.major = element_line(color="#000000"), 
+            panel.grid.minor=element_line(color="#000000"),
+            axis.title.x=element_blank(), axis.ticks.x=element_blank(),
+            axis.title.y=element_blank(), axis.ticks.y=element_blank())
   })
 }
 
