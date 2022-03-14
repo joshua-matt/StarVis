@@ -6,12 +6,12 @@ The purpose of this tool is to allow astronomers of any level to study the night
 
 ## Data
 As stated above, this project uses the [HYG 3.0](https://drive.google.com/file/d/1HSYwR0N8DmJ10MELgu2ruB4kY-72MZbP/view?usp=sharing) dataset. HYG is the amalgamation of three stellar datasets: the Hipparcos catalog, which provides positional information, the Yale Bright Star catalog, which provides information about star names and colors, and the Gliese catalog, which covers nearly all stars within 75 lightyears. The variables of the dataset used in StarVis are
-	* _ra_ (the [horizontal position](https://en.wikipedia.org/wiki/Right_ascension) of the star on the celestial sphere),
-	* _dec_ (the [vertical position](https://en.wikipedia.org/wiki/Declination) of the star on the celestial sphere),
-	* _mag_ (how bright the star looks from Earth),
-	* _absmag_ (how much light the star gives off),
-	* _ci_ (the [color](https://en.wikipedia.org/wiki/Color_index) of the star),
-	* _dist_ (how many parsecs away the star is).
+* _ra_ (the [horizontal position](https://en.wikipedia.org/wiki/Right_ascension) of the star on the celestial sphere),
+* _dec_ (the [vertical position](https://en.wikipedia.org/wiki/Declination) of the star on the celestial sphere),
+* _mag_ (how bright the star looks from Earth),
+* _absmag_ (how much light the star gives off),
+* _ci_ (the [color](https://en.wikipedia.org/wiki/Color_index) of the star),
+* _dist_ (how many parsecs away the star is).
 	
 ## Process
 The dataset already came in a .csv format, so no tidying was necessary. However, within the code, new variables are computed to accommadate more familiar units of measurement and, in one case, to infer one quantity (temperature) from another quantity (_ci_).
