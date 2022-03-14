@@ -1,6 +1,8 @@
 # StarVis
 This repository is for a data visualization project studying a database of 120,000 stars. I use the [HYG 3.0](https://drive.google.com/file/d/1HSYwR0N8DmJ10MELgu2ruB4kY-72MZbP/view?usp=sharing) dataset, which can be read more about [here](http://www.astronexus.com/hyg).
 
+Check out a video demo [here](https://youtu.be/cuMcgmu2QII)!
+
 ## Purpose
 The purpose of this tool is to allow astronomers of any level to study the night sky according to some basic properties of stars: brightness, temperature, and distance. The main contribution of this software is the Map mode, which lets users filter out stars in the night sky to create a custom star map. The Map mode is supplemented by a Histogram mode, which lets users see the distributions of the three given properties over their filtered night sky.
 
