@@ -38,3 +38,16 @@ This repository is for a data visualization project studying a database of 120,0
 
 ### 3/4
 50mins - adding more customization, cleaning up display
+
+### 3/10
+120mins - determining ui layout, implementing large plot
+
+### 3/12
+180mins - making ui elements fit together nicely, adding extra map filters
+
+### 3/13
+60mins - interactive histograms
+
+### 3/14
+60mins - commenting code
+
