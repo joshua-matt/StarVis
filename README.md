@@ -6,12 +6,12 @@ The purpose of this tool is to allow astronomers of any level to study the night
 
 ## Data
 As stated above, this project uses the [HYG 3.0](https://drive.google.com/file/d/1HSYwR0N8DmJ10MELgu2ruB4kY-72MZbP/view?usp=sharing) dataset. HYG is the amalgamation of three stellar datasets: the Hipparcos catalog, which provides positional information, the Yale Bright Star catalog, which provides information about star names and colors, and the Gliese catalog, which covers nearly all stars within 75 lightyears. The variables of the dataset used in StarVis are
-	- _ra_ (the horizontal position of the star on the celestial sphere),
-	- _dec_ (the vertical position of the star on the celestial sphere),
-	- _mag_ (how bright the star looks from Earth),
-	- _absmag_ (how much light the star gives off),
-	- [_ci_](https://en.wikipedia.org/wiki/Color_index) (the color of the star),
-	- _dist_ (how many parsecs away the star is).
+	* _ra_ (the [horizontal position](https://en.wikipedia.org/wiki/Right_ascension) of the star on the celestial sphere),
+	* _dec_ (the [vertical position](https://en.wikipedia.org/wiki/Declination) of the star on the celestial sphere),
+	* _mag_ (how bright the star looks from Earth),
+	* _absmag_ (how much light the star gives off),
+	* _ci_ (the [color](https://en.wikipedia.org/wiki/Color_index) of the star),
+	* _dist_ (how many parsecs away the star is).
 	
 ## Process
 The dataset already came in a .csv format, so no tidying was necessary. However, within the code, new variables are computed to accommadate more familiar units of measurement and, in one case, to infer one quantity (temperature) from another quantity (_ci_).
@@ -29,11 +29,6 @@ The main insight given through brief use of this software are that, within the d
 ## Improvements
 Many features of StarVis were left out due to time constraints. These include the ability to rotate the celestial sphere and center the viewport on any star in the sky for more flexible viewing and the incorporation of _absmag_ into filtering. Additionally, some aspects of the UI could be smoother, such as the layout of the viewing page and the speed of map rendering.
 
-
-
-
-
-
 ## Time log:
 ### 2/8
 25mins - exploratory analysis on color vs brightness
@@ -49,8 +44,6 @@ Many features of StarVis were left out due to time constraints. These include th
 
 ### 2/15
 35mins - figuring out plots for distance vs velocity away from sun
-
-	- then learned that within local group, expansion of universe is not measurable ;_;
 
 ### 2/16
 20mins - looking into spectra, stellar temperatures
